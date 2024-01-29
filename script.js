@@ -1,9 +1,16 @@
-//your JS code here. If required.
-function getFormvalue() {
-    //Write your code here
-	let first = document.getElementById("fname").value;
-	let last = document.getElementById("lname").value;
-    let ph=document.getElementById("phno").value;
-    let email=document.getElementById("email").value;
-	alert('First Name:'+first+'\nLast Name:'+last+'\nPhone Number:'+ph+'\nEmail ID:'+email);
-}
+const form = document.querySelector("form");
+
+form.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevents the default form submission behavior
+
+    // Get form information
+    const formData = new FormData(form);
+    let formInfo = "";
+
+    for (const [key, value] of formData.entries()) {
+        formInfo+=`${key}: ${value}\n`;
+    }
+
+    // Display alert with form information
+    alert(formInfo);
+});
